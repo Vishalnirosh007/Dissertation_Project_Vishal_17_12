@@ -18,9 +18,9 @@ def my_records():
                     **Timestamp:** {record[5]}
                 """)
         
-        # Clear Data Button with confirmation
-        if st.button("Clear All Records"):
-            if st.confirm("Are you sure you want to clear all records?", key="confirm_clear"):
+        # Confirmation checkbox for clearing data
+        if st.checkbox("I confirm that I want to clear all records", key="confirm_clear"):
+            if st.button("Clear All Records"):
                 delete_user_records(st.session_state['user_id'])
                 st.success("All records have been cleared.")
                 st.experimental_rerun()  # Rerun to refresh the page and show that records have been cleared
