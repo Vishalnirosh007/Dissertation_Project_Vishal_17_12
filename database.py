@@ -125,12 +125,12 @@ def delete_user_records(user_id):
     conn.commit()
     conn.close()
 
-def clear_all_inquiries():
-    conn = sqlite3.connect('plant_disease_recognition.db')  # Replace with your actual database connection
-    cursor = conn.cursor()
-    cursor.execute("DELETE FROM inquiries")  # Assuming 'inquiries' is the table that stores all inquiries
-    conn.commit()
-    conn.close()
+##def clear_all_inquiries():
+    ##conn = sqlite3.connect('plant_disease_recognition.db')  # Replace with your actual database connection
+    ##cursor = conn.cursor()
+    ##cursor.execute("DELETE FROM inquiries")  # Assuming 'inquiries' is the table that stores all inquiries
+    ##conn.commit()
+    ##conn.close()
 
 # Function to store contact inquiries
 def store_inquiry(name, email, message):
@@ -156,6 +156,8 @@ def store_response(inquiry_id, response_text):
 def get_user_inquiries_with_responses(user_email):
     conn = sqlite3.connect('plant_disease_recognition.db')
     cursor = conn.cursor()
+    
+    # Select all inquiries and their responses, if available, for the user
     cursor.execute('''
         SELECT 
             inquiries.id, 

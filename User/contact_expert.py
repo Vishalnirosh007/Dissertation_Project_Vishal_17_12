@@ -27,6 +27,7 @@ def contact_expert():
 def view_responses(user_email):
     st.header("📋 Your Inquiries and Responses")
     
+    # Get inquiries and responses for the provided email
     inquiries_with_responses = get_user_inquiries_with_responses(user_email)
     
     if inquiries_with_responses:
@@ -35,14 +36,15 @@ def view_responses(user_email):
                 st.markdown(f"""
                     <div style="border: 1px solid #ddd; border-radius: 10px; padding: 15px; margin: 10px 0;">
                         <h4>Inquiry:</h4>
-                        <p>{inquiry[1]}</p>
-                        <p><strong>Submitted at:</strong> {inquiry[2]}</p>
+                        <p>{inquiry[1]}</p>  <!-- Inquiry message -->
+                        <p><strong>Submitted at:</strong> {inquiry[2]}</p>  <!-- Inquiry timestamp -->
                         <h4>Response:</h4>
-                        <p>{inquiry[3] if inquiry[3] else "No response yet"}</p>
-                        <p><strong>Response Time:</strong> {inquiry[4] if inquiry[4] else "N/A"}</p>
+                        <p>{inquiry[3] if inquiry[3] else "No response yet"}</p>  <!-- Show response if available -->
+                        <p><strong>Response Time:</strong> {inquiry[4] if inquiry[4] else "N/A"}</p>  <!-- Response timestamp -->
                     </div>
                 """, unsafe_allow_html=True)
     else:
+        st.warning("No inquiries found.")
         st.warning("No inquiries found.")
 
 if __name__ == "__main__":
