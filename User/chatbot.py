@@ -5,7 +5,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 from spellchecker import SpellChecker
-from chat_response import questions, answers, fallback_responses  # Import from chat_response.py
+from User.chat_response import questions, answers, fallback_responses  # Import from chat_response.py
 
 # Download NLTK data (if not already downloaded)
 nltk.download('punkt')

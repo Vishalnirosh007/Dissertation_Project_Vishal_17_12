@@ -1,13 +1,13 @@
 # Main.py
 import streamlit as st
 from database import init_db, create_user, authenticate_user, get_user_records, save_disease_record, delete_user_records
-from home import home
-from about import about
-from disease_recognition import disease_recognition
-from learn import learn, learn_tutorials, learn_video_tutorials, learn_disease_locations, learn_disease_locations_with_fertilizers_location # Import new functions for Learn
-from chatbot import main as chatbot
-from my_records import my_records, prediction_confidence_over_time
-from contact_expert import contact_expert  # Import the contact_expert function
+from User.home import home
+from User.about import about
+from User.disease_recognition import disease_recognition
+from User.learn import learn, learn_tutorials, learn_video_tutorials, learn_disease_locations, learn_disease_locations_with_fertilizers_location
+from User.chatbot import main as chatbot
+from User.my_records import my_records, prediction_confidence_over_time
+from User.contact_expert import contact_expert, view_responses  # Import both contact_expert and view_responses
 
 # Initialize the database
 init_db()
@@ -28,7 +28,7 @@ def login():
             st.session_state['logged_in'] = True
             st.session_state['user_id'] = user[0]
             st.success("Logged in successfully")
-            st.experimental_rerun()  # Rerun the app to reflect the login state immediately
+            st.experimental_rerun()
         else:
             st.error("Invalid username or password")
 
@@ -47,15 +47,12 @@ def logout():
         st.session_state['logged_in'] = False
         st.session_state['user_id'] = None
         st.success("Logged out successfully")
-        st.experimental_rerun()  # Rerun the app to reflect the logout state immediately
+        st.experimental_rerun()
 
-# Main Page Structure with website_mode
 if st.session_state['logged_in']:
-    # Display the logout button at the top of the sidebar
     st.sidebar.title("Navigation")
     logout()
 
-    # Display the navigation bar using website_mode
     website_mode = st.sidebar.selectbox("Select Page", ["Home", "About", "Disease Recognition", "Learn", "Plant Disease Chatbot", "My Records", "Contact Expert"], key="website_mode")
     
     if website_mode == "Learn":
@@ -85,10 +82,16 @@ if st.session_state['logged_in']:
     elif website_mode == "Plant Disease Chatbot":
         chatbot()
     elif website_mode == "Contact Expert":
-        contact_expert()  # Add the Contact Expert page
+        # Subpage logic for Contact Expert
+        contact_expert_subpage = st.sidebar.radio("Subpage", ["Contact Expert", "View Responses"], key="contact_expert_subpage")
+        if contact_expert_subpage == "Contact Expert":
+            contact_expert()
+        elif contact_expert_subpage == "View Responses":
+            user_email = st.text_input("Enter your email to view responses", placeholder="Your email")
+            if user_email:
+                view_responses(user_email)
 
 else:
-    # Provide the option to log in or register
     auth_mode = st.selectbox("Select Action", ["Login", "Register"], key="auth_mode")
     if auth_mode == "Login":
         login()

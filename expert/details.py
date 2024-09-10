@@ -1,5 +1,5 @@
 import streamlit as st
-from treatments import get_treatment_details
+from User.treatments import get_treatment_details
 
 def details():
     if 'disease_name' in st.session_state:

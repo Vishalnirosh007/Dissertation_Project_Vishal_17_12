@@ -180,3 +180,18 @@ def get_user_inquiries(user_id):
         inquiries.append(inquiry)
 
     return inquiries
+
+
+
+################Expert 
+def authenticate_expert(email, password):
+     # Hardcoded email and password for demonstration
+    default_expert_email = "expert@example.com"
+    default_expert_password = "password123"
+    
+    # Check if the provided email and password match
+    if email == default_expert_email and password == default_expert_password:
+        return (1, "Expert Name")  # Return expert ID and name
+    else:
+        return None
+

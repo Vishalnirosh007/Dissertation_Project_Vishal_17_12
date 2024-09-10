@@ -1,9 +1,9 @@
 import streamlit as st
 import tensorflow as tf
 import numpy as np
-from treatments import get_treatments
+from User.treatments import get_treatments
 from database import save_disease_record
-from disease_details import get_disease_details  # Import the function here
+from User.disease_details import get_disease_details  # Import the function here
 
 # Add a mapping of diseases to healthy leaf images
 healthy_leaf_images = {

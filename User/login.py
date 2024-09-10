@@ -1,8 +1,8 @@
-    import streamlit as st
-    import webbrowser
-    from database import authenticate_user
+import streamlit as st
+import webbrowser
+from database import authenticate_user
 
-    def login():
+def login():
         st.title("Login")
         username = st.text_input("Username", key="login_username")
         password = st.text_input("Password", type="password", key="login_password")
@@ -16,5 +16,5 @@
             else:
                 st.error("Invalid username or password")
 
-    if __name__ == "__main__":
+if __name__ == "__main__":
         login()
