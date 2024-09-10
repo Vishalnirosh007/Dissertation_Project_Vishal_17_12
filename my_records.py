@@ -4,33 +4,34 @@ import seaborn as sns
 from database import get_user_records, delete_user_records
 
 def my_records():
-    st.header("📋 My Disease Recognition Records")
+    st.markdown("<h2 style='text-align: center; color: green;'>📋 My Disease Recognition Records 📋</h1>", unsafe_allow_html=True)
     
-    # Retrieve records
+    # Retrieve records from the database
     records = get_user_records(st.session_state['user_id'])
     
     if records:
         for record in records:
-            with st.expander(f"Disease: {record[3]} (Confidence: {float(record[4]):.2f})", expanded=False):
+            with st.expander(f"<b>Disease:</b> {record[3]} (Confidence: {float(record[4]):.2f})", expanded=False):
                 st.markdown(f"""
-                    **Image Path:** {record[2]}  
-                    **Prediction Confidence:** {float(record[4]):.2f}  
-                    **Timestamp:** {record[5]}
-                """)
+                    <p style='font-size: 18px;'><b>Image Path:</b> {record[2]}</p>  
+                    <p style='font-size: 18px;'><b>Prediction Confidence:</b> {float(record[4]):.2f}</p>  
+                    <p style='font-size: 18px;'><b>Timestamp:</b> {record[5]}</p>
+                """, unsafe_allow_html=True)
         
         # Confirmation checkbox for clearing data
+        st.markdown("<hr style='border: 1px solid #ddd;'>", unsafe_allow_html=True)
         if st.checkbox("I confirm that I want to clear all records", key="confirm_clear"):
-            if st.button("Clear All Records"):
+            if st.button("Clear All Records", key="clear_btn"):
                 delete_user_records(st.session_state['user_id'])
                 st.success("All records have been cleared.")
                 st.experimental_rerun()  # Rerun to refresh the page and show that records have been cleared
     else:
         st.warning("No records found.")
-        
+
 def prediction_confidence_over_time():
-    st.header("📈 Prediction Confidence Over Time")
+    st.markdown("<h2 style='text-align: center; color: green;'>📈 Prediction Confidence Over Time 📈</h1>", unsafe_allow_html=True)
     
-    # Retrieve records
+    # Retrieve records for visualization
     records = get_user_records(st.session_state['user_id'])
     
     if records:
@@ -41,7 +42,7 @@ def prediction_confidence_over_time():
         # Create a line chart for Prediction Confidence over time
         plt.figure(figsize=(10, 5))
         sns.lineplot(x=timestamps, y=confidences, marker="o", color="royalblue", linestyle='--')
-        plt.xticks(rotation=45, ha="right")
+        plt.xticks(rotation=45, ha="right", fontsize=10)
         plt.title("Prediction Confidence Over Time", fontsize=16)
         plt.xlabel("Timestamp", fontsize=14)
         plt.ylabel("Prediction Confidence", fontsize=14)

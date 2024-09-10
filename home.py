@@ -1,30 +1,58 @@
 import streamlit as st
 
 def home():
-    st.header("PLANT DISEASE RECOGNITION SYSTEM")
-    image_path = "Images/home_page.jpeg"
-    st.image(image_path, use_column_width=True)
-    st.markdown("""
-    Welcome to the Plant Disease Recognition System! 🌿🔍
+    st.markdown("<h1 style='text-align: center; color: green;'>🌱 PLANT DISEASE RECOGNITION SYSTEM 🌱</h1>", unsafe_allow_html=True)
     
-    Our mission is to help in identifying plant diseases efficiently. Upload an image of a plant, and our system will analyze it to detect any signs of diseases. Together, let's protect our crops and ensure a healthier harvest!
+    # Adding a high-quality hero image
+    image_path = "Images/home_page.jpeg"
+    st.image(image_path, use_column_width=True, caption="Detect plant diseases with precision.")
+    
+    # Introductory section with clear structure
+    st.markdown("""
+    <div style="text-align: justify; padding: 20px; font-size: 18px;">
+    Welcome to the Plant Disease Recognition System! Our platform is designed to assist farmers, researchers, and agriculturists in efficiently identifying plant diseases through image analysis. Simply upload a picture of your plant, and let our advanced algorithms do the rest. Together, we can protect crops and ensure healthier, more sustainable harvests.
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("<h2 style='color: #4CAF50;'>How It Works</h2>", unsafe_allow_html=True)
+    
+    st.markdown("""
+    <ul style="font-size: 18px; line-height: 1.6;">
+        <li><b>Upload Image:</b> Visit the <b>Disease Recognition</b> page and upload an image of a plant displaying signs of disease.</li>
+        <li><b>Image Analysis:</b> Using state-of-the-art machine learning models, our system will quickly process the image to detect potential diseases.</li>
+        <li><b>Get Results:</b> Receive a detailed report with the diagnosis and actionable recommendations to treat the issue.</li>
+    </ul>
+    """, unsafe_allow_html=True)
 
-    ### How It Works
-    1. **Upload Image:** Go to the **Disease Recognition** page and upload an image of a plant with suspected diseases.
-    2. **Analysis:** Our system will process the image using advanced algorithms to identify potential diseases.
-    3. **Results:** View the results and recommendations for further action.
+    # Highlighting key features of the system
+    st.markdown("<h2 style='color: #4CAF50;'>Why Choose Our System?</h2>", unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div style="text-align: justify; font-size: 18px; line-height: 1.6;">
+    <b>🔍 Accurate and Reliable:</b> Our machine learning algorithms are designed to provide high accuracy in plant disease detection.<br>
+    <b>💡 Easy to Use:</b> With a user-friendly interface, you can upload, analyze, and receive results with ease.<br>
+    <b>⚡ Fast and Efficient:</b> Get results within seconds, allowing you to make quick, informed decisions.<br>
+    <b>🌍 Global Support:</b> Our system is trained on a wide variety of plant species and diseases, ensuring coverage for crops from different regions.
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Adding a call to action for users to start using the service
+    st.markdown("<h2 style='color: #4CAF50;'>Ready to Get Started?</h2>", unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div style="text-align: center; font-size: 18px; line-height: 1.6;">
+    <i>Click on the <b>Disease Recognition</b> page in the sidebar to upload your plant image and start diagnosing plant diseases today!</i>
+    </div>
+    """, unsafe_allow_html=True)
 
-    ### Why Choose Us?
-    - **Accuracy:** Our system utilizes state-of-the-art machine learning techniques for accurate disease detection.
-    - **User-Friendly:** Simple and intuitive interface for seamless user experience.
-    - **Fast and Efficient:** Receive results in seconds, allowing for quick decision-making.
+    # Footer and about section
+    st.markdown("<h2 style='color: #4CAF50;'>About Us</h2>", unsafe_allow_html=True)
 
-    ### Get Started
-    Click on the **Disease Recognition** page in the sidebar to upload an image and experience the power of our Plant Disease Recognition System!
-
-    ### About Us
-    Learn more about the project, our team, and our goals on the **About** page.
-    """)
+    st.markdown("""
+    <div style="text-align: justify; font-size: 18px; line-height: 1.6;">
+    I am a final-year Software Engineering student, and this project is my capstone. The Plant Disease Recognition System leverages advanced technology to support efficient plant health monitoring. Find more details about the project and my background on the <b>About Us</b> page.
+    </div>
+    """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     home()

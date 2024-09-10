@@ -4,7 +4,7 @@ from database import init_db, create_user, authenticate_user, get_user_records, 
 from home import home
 from about import about
 from disease_recognition import disease_recognition
-from learn import learn, learn_tutorials, learn_video_tutorials, learn_disease_locations  # Import new function for Learn
+from learn import learn, learn_tutorials, learn_video_tutorials, learn_disease_locations, learn_disease_locations_with_fertilizers_location # Import new functions for Learn
 from chatbot import main as chatbot
 from my_records import my_records, prediction_confidence_over_time
 from contact_expert import contact_expert  # Import the contact_expert function
@@ -49,40 +49,42 @@ def logout():
         st.success("Logged out successfully")
         st.experimental_rerun()  # Rerun the app to reflect the logout state immediately
 
-# Main Page Structure
+# Main Page Structure with website_mode
 if st.session_state['logged_in']:
     # Display the logout button at the top of the sidebar
     st.sidebar.title("Navigation")
     logout()
 
-    # Display the navigation bar
-    app_mode = st.sidebar.selectbox("Select Page", ["Home", "About", "Disease Recognition", "Learn", "Plant Disease Chatbot", "My Records", "Contact Expert"], key="app_mode")
+    # Display the navigation bar using website_mode
+    website_mode = st.sidebar.selectbox("Select Page", ["Home", "About", "Disease Recognition", "Learn", "Plant Disease Chatbot", "My Records", "Contact Expert"], key="website_mode")
     
-    if app_mode == "Learn":
-        learn_subpage = st.sidebar.radio("Subpage", ["Learn About Plant Diseases", "Detailed Tutorials", "Video Tutorial", "Where Diseases Are Found"], key="learn_subpage")
+    if website_mode == "Learn":
+        learn_subpage = st.sidebar.radio("Subpage", ["Learn About Plant Diseases", "Detailed Tutorials", "Video Tutorial", "Where Diseases Are Found Locally and Globally", "Find Fertilizer and Pesticide near you"], key="learn_subpage")
         if learn_subpage == "Learn About Plant Diseases":
             learn()
         elif learn_subpage == "Detailed Tutorials":
             learn_tutorials()
         elif learn_subpage == "Video Tutorial":
             learn_video_tutorials()
-        elif learn_subpage == "Where Diseases Are Found":
+        elif learn_subpage == "Where Diseases Are Found Locally and Globally":
             learn_disease_locations()
-    elif app_mode == "My Records":
+        elif learn_subpage == "Find Fertilizer and Pesticide near you":
+            learn_disease_locations_with_fertilizers_location()
+    elif website_mode == "My Records":
         subpage = st.sidebar.radio("Subpage", ["Records", "Prediction Confidence Over Time"], key="subpage")
         if subpage == "Records":
             my_records()
         elif subpage == "Prediction Confidence Over Time":
             prediction_confidence_over_time()
-    elif app_mode == "Home":
+    elif website_mode == "Home":
         home()
-    elif app_mode == "About":
+    elif website_mode == "About":
         about()
-    elif app_mode == "Disease Recognition":
+    elif website_mode == "Disease Recognition":
         disease_recognition()
-    elif app_mode == "Plant Disease Chatbot":
+    elif website_mode == "Plant Disease Chatbot":
         chatbot()
-    elif app_mode == "Contact Expert":
+    elif website_mode == "Contact Expert":
         contact_expert()  # Add the Contact Expert page
 
 else:

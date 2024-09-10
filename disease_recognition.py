@@ -47,6 +47,7 @@ healthy_leaf_images = {
 }
 
 def model_prediction(test_image):
+    # Load pre-trained model
     model = tf.keras.models.load_model("trained_plant_disease_model.keras")
     image = tf.keras.preprocessing.image.load_img(test_image, target_size=(128,128))
     input_arr = tf.keras.preprocessing.image.img_to_array(image)
@@ -58,22 +59,25 @@ def format_class_name(class_name):
     return class_name.replace("___", " ").replace("_", " ").title()
 
 def disease_recognition():
-    st.header("Disease Recognition")
-    test_image = st.file_uploader("Choose an Image:")
+    st.markdown("<h1 style='text-align: center; color: green;'>🌱 Plant Disease Recognition 🌱</h1>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; font-size: 18px;'>Upload an image of a plant leaf and let our AI model identify if it's healthy or diseased!</p>", unsafe_allow_html=True)
+    
+    # Upload the test image
+    test_image = st.file_uploader("Choose an Image of a Plant Leaf:", type=["jpg", "jpeg", "png"])
     
     if test_image is not None:
         if st.button("Show Image"):
-            st.image(test_image, use_column_width=True)
+            st.image(test_image, caption="Uploaded Image", use_column_width=True)
         
         if st.button("Predict"):
-            with st.spinner("Please wait while we process the image..."):
+            with st.spinner("Please wait while we analyze the image..."):
                 import time
                 time.sleep(2)
 
                 # Perform prediction
                 result_index, confidence = model_prediction(test_image)
                 
-                # Disease classes
+                # List of disease classes
                 class_names = ['Apple___Apple_scab', 'Apple___Black_rot', 'Apple___Cedar_apple_rust', 'Apple___healthy',
                                'Blueberry___healthy', 'Cherry_(including_sour)___Powdery_mildew', 
                                'Cherry_(including_sour)___healthy', 'Corn_(maize)___Cercospora_leaf_spot_Gray_leaf_spot', 
@@ -90,13 +94,13 @@ def disease_recognition():
                                'Tomato___healthy']
                 
                 formatted_class_name = format_class_name(class_names[result_index])
-                treatments = get_treatments()  # Get the treatment dictionary
+                treatments = get_treatments()  # Fetch treatment dictionary
                 treatment = treatments.get(class_names[result_index], "No treatment information available.")
                 
-                st.success(f"Model is predicting it's a {formatted_class_name} with {confidence:.2f} confidence")
+                st.success(f"The model predicts it's {formatted_class_name} with {confidence:.2f} confidence.")
                 st.info(f"Suggested Treatment: {treatment}")
-
-                # Display images side by side using columns
+                
+                # Display images side by side
                 col1, col2 = st.columns(2)
 
                 with col1:
@@ -108,14 +112,17 @@ def disease_recognition():
                     with col2:
                         st.image(healthy_image_path, caption="Healthy Leaf", use_column_width=True)
 
-                # Save the prediction to the database
-                if st.session_state['logged_in']:
-                    image_path = f"Images/{test_image.name}"  # Adjust based on how you're handling images
+                # Save the prediction to the database if logged in
+                if st.session_state.get('logged_in', False):
+                    image_path = f"Images/{test_image.name}"  # Adjust image handling logic as needed
                     save_disease_record(st.session_state['user_id'], image_path, formatted_class_name, confidence)
                 else:
                     st.warning("You need to be logged in to save records.")
                 
-                # Expander for detailed information
-                with st.expander("Learn More"):
+                # Provide detailed information in an expandable section
+                with st.expander("Learn More About This Disease"):
                     detailed_info = get_disease_details(formatted_class_name)
                     st.markdown(detailed_info, unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    disease_recognition()
