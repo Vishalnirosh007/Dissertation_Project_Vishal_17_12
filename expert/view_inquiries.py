@@ -40,17 +40,18 @@ def view_inquiries():
                     </div>
                 """, unsafe_allow_html=True)
 
-                # Add a form to allow experts to reply to the inquiry
-                with st.form(f"response_form_{inquiry[0]}"):
-                    response_text = st.text_area(f"Reply to Inquiry {inquiry[0]}", placeholder="Type your response here")
-                    submitted = st.form_submit_button("Send Response")
-                    
-                    if submitted:
-                        if not response_text:
-                            st.error("⚠️ Response cannot be empty.")
-                        else:
-                            store_response(inquiry[0], response_text)
-                            st.success("✅ Response sent successfully!")
+                # Add an expander to allow experts to reply to the inquiry
+                with st.expander("Reply"):
+                    with st.form(f"response_form_{inquiry[0]}"):
+                        response_text = st.text_area(f"Reply to Inquiry {inquiry[0]}", placeholder="Type your response here")
+                        submitted = st.form_submit_button("Send Response")
+                        
+                        if submitted:
+                            if not response_text:
+                                st.error("⚠️ Response cannot be empty.")
+                            else:
+                                store_response(inquiry[0], response_text)
+                                st.success("✅ Response sent successfully!")
 
     else:
         st.warning("No inquiries found.")

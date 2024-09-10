@@ -53,9 +53,9 @@ if st.session_state['logged_in']:
     st.sidebar.title("Navigation")
     logout()
 
-    website_mode = st.sidebar.selectbox("Select Page", ["Home", "About", "Disease Recognition", "Learn", "Plant Disease Chatbot", "My Records", "Contact Expert"], key="website_mode")
+    app_mode = st.sidebar.selectbox("Select Page", ["Home", "About", "Disease Recognition", "Learn", "Plant Disease Chatbot", "My Records", "Contact Expert"], key="app_mode")
     
-    if website_mode == "Learn":
+    if app_mode == "Learn":
         learn_subpage = st.sidebar.radio("Subpage", ["Learn About Plant Diseases", "Detailed Tutorials", "Video Tutorial", "Where Diseases Are Found Locally and Globally", "Find Fertilizer and Pesticide near you"], key="learn_subpage")
         if learn_subpage == "Learn About Plant Diseases":
             learn()
@@ -67,21 +67,21 @@ if st.session_state['logged_in']:
             learn_disease_locations()
         elif learn_subpage == "Find Fertilizer and Pesticide near you":
             learn_disease_locations_with_fertilizers_location()
-    elif website_mode == "My Records":
+    elif app_mode == "My Records":
         subpage = st.sidebar.radio("Subpage", ["Records", "Prediction Confidence Over Time"], key="subpage")
         if subpage == "Records":
             my_records()
         elif subpage == "Prediction Confidence Over Time":
             prediction_confidence_over_time()
-    elif website_mode == "Home":
+    elif app_mode == "Home":
         home()
-    elif website_mode == "About":
+    elif app_mode == "About":
         about()
-    elif website_mode == "Disease Recognition":
+    elif app_mode == "Disease Recognition":
         disease_recognition()
-    elif website_mode == "Plant Disease Chatbot":
+    elif app_mode == "Plant Disease Chatbot":
         chatbot()
-    elif website_mode == "Contact Expert":
+    elif app_mode == "Contact Expert":
         # Subpage logic for Contact Expert
         contact_expert_subpage = st.sidebar.radio("Subpage", ["Contact Expert", "View Responses"], key="contact_expert_subpage")
         if contact_expert_subpage == "Contact Expert":

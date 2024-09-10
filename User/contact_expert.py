@@ -1,7 +1,5 @@
 import streamlit as st
-from database import store_inquiry
-from database import get_user_inquiries_with_responses
-
+from database import store_inquiry, get_user_inquiries_with_responses
 
 def contact_expert():
     # Page Header
@@ -25,10 +23,6 @@ def contact_expert():
             else:
                 store_inquiry(name, email, message)
                 st.success("✅ Your inquiry has been sent successfully! We'll get back to you shortly.")
-
-if __name__ == "__main__":
-    contact_expert()
-
 
 def view_responses(user_email):
     st.header("📋 Your Inquiries and Responses")

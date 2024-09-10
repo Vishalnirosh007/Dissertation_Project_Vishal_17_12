@@ -11,11 +11,14 @@ def my_records():
     
     if records:
         for record in records:
-            with st.expander(f"<b>Disease:</b> {record[3]} (Confidence: {float(record[4]):.2f})", expanded=False):
+            # Use Markdown for inside the expander title as HTML is not supported there
+            expander_title = f"Disease: {record[3]} (Confidence: {float(record[4]):.2f})"
+            
+            with st.expander(expander_title, expanded=False):
                 st.markdown(f"""
-                    <p style='font-size: 18px;'><b>Image Path:</b> {record[2]}</p>  
-                    <p style='font-size: 18px;'><b>Prediction Confidence:</b> {float(record[4]):.2f}</p>  
-                    <p style='font-size: 18px;'><b>Timestamp:</b> {record[5]}</p>
+                    **Image Path:** {record[2]}  
+                    **Prediction Confidence:** {float(record[4]):.2f}  
+                    **Timestamp:** {record[5]}
                 """, unsafe_allow_html=True)
         
         # Confirmation checkbox for clearing data

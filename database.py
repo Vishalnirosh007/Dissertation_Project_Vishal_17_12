@@ -125,6 +125,13 @@ def delete_user_records(user_id):
     conn.commit()
     conn.close()
 
+def clear_all_inquiries():
+    conn = sqlite3.connect('plant_disease_recognition.db')  # Replace with your actual database connection
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM inquiries")  # Assuming 'inquiries' is the table that stores all inquiries
+    conn.commit()
+    conn.close()
+
 # Function to store contact inquiries
 def store_inquiry(name, email, message):
     conn = sqlite3.connect('plant_disease_recognition.db')
@@ -150,16 +157,27 @@ def get_user_inquiries_with_responses(user_email):
     conn = sqlite3.connect('plant_disease_recognition.db')
     cursor = conn.cursor()
     cursor.execute('''
-        SELECT inquiries.id, inquiries.message, inquiries.timestamp, responses.response_text, responses.timestamp
-        FROM inquiries
-        LEFT JOIN responses ON inquiries.id = responses.inquiry_id
-        WHERE inquiries.email = ?
-        ORDER BY inquiries.timestamp DESC
+        SELECT 
+            inquiries.id, 
+            inquiries.message, 
+            inquiries.timestamp, 
+            responses.response_text, 
+            responses.timestamp 
+        FROM 
+            inquiries
+        LEFT JOIN 
+            responses 
+        ON 
+            inquiries.id = responses.inquiry_id
+        WHERE 
+            inquiries.email = ?
+        ORDER BY 
+            inquiries.timestamp DESC
     ''', (user_email,))
+    
     inquiries_with_responses = cursor.fetchall()
     conn.close()
     return inquiries_with_responses
-
 
 # Function to get user inquiries
 def get_user_inquiries(user_id):
