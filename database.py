@@ -1,6 +1,5 @@
 import sqlite3
 
-# Initialize the database connection
 def init_db():
     conn = sqlite3.connect('plant_disease_recognition.db')
     cursor = conn.cursor()
@@ -63,24 +62,20 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Function to create a user account
+
 def create_user(username, password):
     conn = sqlite3.connect('plant_disease_recognition.db')
     cursor = conn.cursor()
-    
-    # Check if the username already exists
     cursor.execute('SELECT * FROM users WHERE username = ?', (username,))
     if cursor.fetchone():
         conn.close()
-        return False  # Username already exists
-    
-    # Insert the new user into the database
+        return False
     cursor.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, password))
     conn.commit()
     conn.close()
     return True
 
-# Function to authenticate a user
+
 def authenticate_user(username, password):
     conn = sqlite3.connect('plant_disease_recognition.db')
     cursor = conn.cursor()
@@ -89,7 +84,6 @@ def authenticate_user(username, password):
     conn.close()
     return user
 
-# Function to save a disease record
 def save_disease_record(user_id, image_path, disease_name, prediction_confidence):
     conn = sqlite3.connect('plant_disease_recognition.db')
     cursor = conn.cursor()
@@ -132,7 +126,6 @@ def delete_user_records(user_id):
     ##conn.commit()
     ##conn.close()
 
-# Function to store contact inquiries
 def store_inquiry(name, email, message):
     conn = sqlite3.connect('plant_disease_recognition.db')
     cursor = conn.cursor()
@@ -156,8 +149,6 @@ def store_response(inquiry_id, response_text):
 def get_user_inquiries_with_responses(user_email):
     conn = sqlite3.connect('plant_disease_recognition.db')
     cursor = conn.cursor()
-    
-    # Select all inquiries and their responses, if available, for the user
     cursor.execute('''
         SELECT 
             inquiries.id, 
@@ -207,7 +198,7 @@ def get_user_inquiries(user_id):
 def authenticate_expert(email, password):
      # Hardcoded email and password for demonstration
     default_expert_email = "expert@example.com"
-    default_expert_password = "password123"
+    default_expert_password = "1234"
     
     # Check if the provided email and password match
     if email == default_expert_email and password == default_expert_password:

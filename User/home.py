@@ -1,6 +1,7 @@
 import streamlit as st
 
 def home():
+    
     st.markdown("<h1 style='text-align: center; color: green;'>🌱 PLANT DISEASE RECOGNITION SYSTEM 🌱</h1>", unsafe_allow_html=True)
     
     # Adding a high-quality hero image

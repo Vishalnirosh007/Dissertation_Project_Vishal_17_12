@@ -1,6 +1,3 @@
-# chat_response.py
-
-# Sample dataset of disease-related questions and responses with general human chatting patterns
 data = {
     "What is Apple Scab?": """
 **Apple Scab: Causes, Symptoms, and Management**

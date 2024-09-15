@@ -258,9 +258,8 @@ def learn_disease_locations():
 
     folium_static(global_map)
 
-# Function to convert city/state into latitude and longitude using Google Geocoding API
 def geocode_location(location):
-    api_key = "AIzaSyC9-_hKY78BIITG4k416Agv6-8RX6eYSbs"  # Replace with your Google API key
+    api_key = "AIzaSyC9-_hKY78BIITG4k416Agv6-8RX6eYSbs"
     url = f"https://maps.googleapis.com/maps/api/geocode/json?address={location}&key={api_key}"
     response = requests.get(url)
     results = response.json().get("results", [])
@@ -272,7 +271,6 @@ def geocode_location(location):
         st.error("Location not found. Please enter a valid city or state.")
         return None, None
 
-# Function to fetch nearby pesticide/fertilizer stores using Google Places API
 def get_nearby_stores(lat, lon):
     api_key = "AIzaSyC9-_hKY78BIITG4k416Agv6-8RX6eYSbs"  # Replace with your Google API key
     url = f"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={lat},{lon}&radius=5000&keyword=agriculture%20store|garden%20center|fertilizer|pesticide&key={api_key}"
