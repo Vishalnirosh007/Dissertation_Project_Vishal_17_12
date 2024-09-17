@@ -195,7 +195,7 @@ def authenticate_expert(email, password):
     default_expert_password = "1234"
     
     if email == default_expert_email and password == default_expert_password:
-        return (1, "Expert Name")  # Return expert ID and name
+        return (1, "Expert Name")
     else:
         return None
 
