@@ -9,7 +9,6 @@ def learn():
     <p style='text-align: justify; font-size: 18px;'>Understanding the symptoms and causes of various plant diseases is crucial for effective disease management. Below are some common plant diseases along with their images and explanations:</p>
     """, unsafe_allow_html=True)
 
-    # Disease 1: Apple Scab
     st.markdown("""
     ### 1. Apple Scab
     **Symptoms:** Dark, olive-green spots on leaves and fruits. Leaves may curl and drop early.<br>
@@ -17,7 +16,6 @@ def learn():
     """, unsafe_allow_html=True)
     st.image("Images/apple_scab.jpeg", caption="Apple Scab")
 
-    # Disease 2: Black Rot (Apple)
     st.markdown("""
     ### 2. Black Rot (Apple)
     **Symptoms:** Concentric rings on fruit, cankers on branches, and darkened areas on leaves.<br>
@@ -25,7 +23,6 @@ def learn():
     """, unsafe_allow_html=True)
     st.image("Images/black_rot.jpeg", caption="Black Rot on Apple")
 
-    # Disease 3: Late Blight (Potato)
     st.markdown("""
     ### 3. Late Blight (Potato)
     **Symptoms:** Water-soaked lesions on leaves, stems, and tubers. Lesions may become dark and dry out.<br>
@@ -33,7 +30,6 @@ def learn():
     """, unsafe_allow_html=True)
     st.image("Images/late_blight.jpeg", caption="Late Blight on Potato")
 
-    # Disease 4: Powdery Mildew (Grape)
     st.markdown("""
     ### 4. Powdery Mildew (Grape)
     **Symptoms:** White, powdery fungal growth on leaves, shoots, and fruits.<br>
@@ -41,7 +37,6 @@ def learn():
     """, unsafe_allow_html=True)
     st.image("Images/powdery_mildew.jpeg", caption="Powdery Mildew on Grape")
 
-    # Disease 5: Tomato Yellow Leaf Curl Virus (TYLCV)
     st.markdown("""
     ### 5. Tomato Yellow Leaf Curl Virus (TYLCV)
     **Symptoms:** Yellowing of leaf margins, upward curling of leaves, and stunted plant growth.<br>
@@ -49,7 +44,6 @@ def learn():
     """, unsafe_allow_html=True)
     st.image("Images/tylcv.jpeg", caption="Tomato Yellow Leaf Curl Virus")
 
-    # Disease 6: Citrus Greening (Huanglongbing)
     st.markdown("""
     ### 6. Citrus Greening (Huanglongbing)
     **Symptoms:** Yellowing of leaf veins, misshapen fruit, and premature fruit drop.<br>
@@ -68,7 +62,6 @@ def learn_tutorials():
     <p style='text-align: justify; font-size: 18px;'>In this section, you'll find detailed guides on a variety of topics related to plant diseases, pest control, and sustainable farming practices. These tutorials will help you gain a deeper understanding of managing plant health effectively.</p>
     """, unsafe_allow_html=True)
 
-    # Tutorial 1: Integrated Pest Management (IPM)
     st.markdown("""
     ### Tutorial 1: Integrated Pest Management (IPM)
     **What is IPM?** IPM is a comprehensive approach to pest control that integrates multiple management strategies, aiming to minimize environmental damage while effectively managing pests.
@@ -89,7 +82,6 @@ def learn_tutorials():
     **Example:** In vineyards, pheromone traps can help monitor grape pests like the grapevine moth, reducing the need for blanket pesticide applications.
     """)
 
-    # Tutorial 2: Crop Rotation for Disease Prevention
     st.markdown("""
     ### Tutorial 2: Crop Rotation for Disease Prevention
     **What is Crop Rotation?** Crop rotation involves planting different crops in a particular sequence to reduce the buildup of pathogens and pests that can affect plant health.
@@ -109,7 +101,6 @@ def learn_tutorials():
     **Example:** Rotating tomatoes (prone to early blight) with non-susceptible crops like corn or beans helps break the disease cycle.
     """)
 
-    # Tutorial 3: Sustainable Water Management in Farming
     st.markdown("""
     ### Tutorial 3: Sustainable Water Management in Farming
     **Why Water Management is Critical:** Effective water management helps prevent disease outbreaks caused by over-irrigation (e.g., fungal diseases) or drought stress. Watering plants optimally ensures better yield and plant health.
@@ -128,7 +119,6 @@ def learn_tutorials():
     **Example:** In dry regions, drip irrigation is used to grow tomatoes, preventing diseases like bacterial spot caused by overhead watering.
     """)
 
-    # Tutorial 4: Recognizing Plant Disease Symptoms
     st.markdown("""
     ### Tutorial 4: Recognizing Plant Disease Symptoms
     **Why Symptom Recognition Matters:** Early detection of plant diseases can help prevent their spread and reduce crop losses.
@@ -146,7 +136,6 @@ def learn_tutorials():
     **What to Do:** If you notice any of these symptoms, consult our disease recognition system to identify the potential disease and take action early.
     """)
 
-    # Tutorial 5: Organic Farming Practices for Disease Prevention
     st.markdown("""
     ### Tutorial 5: Organic Farming Practices for Disease Prevention
     **What is Organic Farming?** Organic farming emphasizes using natural inputs and ecological processes to maintain soil fertility and prevent diseases.
@@ -172,10 +161,9 @@ def learn_video_tutorials():
     <p style='text-align: justify; font-size: 18px;'>Watch these helpful video resources explaining common plant diseases, their symptoms, and methods to manage or cure them:</p>
     """, unsafe_allow_html=True)
 
-    # Example YouTube videos (replace with real video URLs)
     video_list = [
         ("Introduction to Plant Disease Management", "https://www.youtube.com/watch?v=rwiKxaCrHGM"),
-        ("Effective Ways to Cure Powdery Mildew", "https://www.youtube.com/shorts/WQmgORc7hbo"),
+        ("Effective Ways to Cure Powdery Mildew", "https://youtu.be/4GYpcXncLCg?si=tXsHIW6J5_7H7Gfq"),
         ("How to Prevent Late Blight in Potatoes", "https://www.youtube.com/watch?v=nU3AlBJoqBk"),
         ("How Apple Scab Forms", "https://www.youtube.com/watch?v=Qh2P8u79nws"),
         ("Northern Leaf Blight in Corn - Prevention Tips", "https://www.youtube.com/watch?v=1rZfbtyzUFQ"),
@@ -195,7 +183,6 @@ def learn_disease_locations():
     <p style='text-align: justify; font-size: 18px;'>Below are maps showing where common plant diseases are found locally and globally:</p>
     """, unsafe_allow_html=True)
 
-    # Local Disease Map (Sri Lanka)
     st.subheader("Sri Lankan Disease Map")
     sri_lanka_coords = [7.8731, 80.7718]
     sri_lanka_map = folium.Map(location=sri_lanka_coords, zoom_start=7)
@@ -222,7 +209,6 @@ def learn_disease_locations():
 
     folium_static(sri_lanka_map)
 
-    # Global Disease Map
     st.subheader("Global Disease Map")
     global_coords = [20.0, 0.0]
     global_map = folium.Map(location=global_coords, zoom_start=2)
@@ -289,12 +275,10 @@ def get_nearby_stores(lat, lon):
 
     return store_locations
 
-# Function to display map with user's location and nearby stores
 def learn_disease_locations_with_fertilizers_location():
     st.markdown("<h1 style='text-align: center; color: green;'>🌱 Find Nearby Pesticides and Fertilizers 🌱</h1>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: justify; font-size: 18px;'>Enter your location to find nearby stores offering pesticides, fertilizers, and other agricultural supplies:</p>", unsafe_allow_html=True)
 
-    # Prompt user to enter their city or state
     location_input = st.text_input("Enter your City or State:", key="manual_location_input_unique")
 
     if location_input:
@@ -307,14 +291,11 @@ def learn_disease_locations_with_fertilizers_location():
         st.warning("Please enter a location to find nearby stores.")
         return
 
-    # Fetch and display nearby stores
     if st.button("Find Nearby Pesticides and Fertilizers", key="find_stores_button"):
         stores = get_nearby_stores(user_lat, user_lon)
 
-        # Create a map centered around the user's location
         user_map = folium.Map(location=[user_lat, user_lon], zoom_start=12)
 
-        # Mark the user's location
         folium.Marker(
             location=[user_lat, user_lon],
             popup="You are here",
@@ -322,7 +303,6 @@ def learn_disease_locations_with_fertilizers_location():
             icon=folium.Icon(color="blue", icon="user")
         ).add_to(user_map)
 
-        # Add markers for nearby pesticide/fertilizer stores
         for store in stores:
             folium.Marker(
                 location=[store["location"]["lat"], store["location"]["lng"]],
@@ -331,10 +311,8 @@ def learn_disease_locations_with_fertilizers_location():
                 icon=folium.Icon(color="green", icon="shopping-cart")
             ).add_to(user_map)
 
-        # Display the map with user location and nearby stores
         folium_static(user_map)
 
-# Main function call
 if __name__ == "__main__":
     learn()
     learn_tutorials()

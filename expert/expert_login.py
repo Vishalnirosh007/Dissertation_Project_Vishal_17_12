@@ -1,5 +1,5 @@
 import streamlit as st
-from database import authenticate_expert  # This should authenticate expert from a database
+from database import authenticate_expert
 
 def expert_login():
     st.title("Expert Login")

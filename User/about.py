@@ -9,7 +9,6 @@ def about():
     </div>
     """, unsafe_allow_html=True)
     
-    # Section about the software
     st.markdown("<h2 style='color: #4CAF50;'>About the Software</h2>", unsafe_allow_html=True)
     
     st.markdown("""
@@ -18,7 +17,6 @@ def about():
     </div>
     """, unsafe_allow_html=True)
 
-    # Dataset details
     st.markdown("<h2 style='color: #4CAF50;'>About the Dataset</h2>", unsafe_allow_html=True)
     
     st.markdown("""
@@ -33,7 +31,6 @@ def about():
     </ul>
     """, unsafe_allow_html=True)
     
-    # More personal details and project goals
     st.markdown("<h2 style='color: #4CAF50;'>More About Me</h2>", unsafe_allow_html=True)
     
     st.markdown("""

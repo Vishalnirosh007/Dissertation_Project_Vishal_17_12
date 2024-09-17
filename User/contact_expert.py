@@ -2,14 +2,12 @@ import streamlit as st
 from database import store_inquiry, get_user_inquiries_with_responses
 
 def contact_expert():
-    # Page Header
     st.markdown("<h1 style='text-align: center; color: green;'>📞 Contact an Expert</h1>", unsafe_allow_html=True)
     st.markdown("""
     <p style='text-align: center; font-size: 18px;'>Need help with plant diseases or farming advice? Send your inquiry to an expert and get professional advice.</p>
     <hr style='border:1px solid #ddd;'>
     """, unsafe_allow_html=True)
 
-    # Contact form
     with st.form("contact_form"):
         st.markdown("<h3 style='text-align: left;'>Fill Out the Form Below</h3>", unsafe_allow_html=True)
         name = st.text_input("Name", placeholder="Enter your full name")
@@ -27,7 +25,6 @@ def contact_expert():
 def view_responses(user_email):
     st.header("📋 Your Inquiries and Responses")
     
-    # Get inquiries and responses for the provided email
     inquiries_with_responses = get_user_inquiries_with_responses(user_email)
     
     if inquiries_with_responses:

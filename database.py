@@ -4,7 +4,7 @@ def init_db():
     conn = sqlite3.connect('plant_disease_recognition.db')
     cursor = conn.cursor()
 
-    # Create users table
+    # users table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY,
@@ -13,7 +13,7 @@ def init_db():
         )
     ''')
 
-    # Create disease_records table
+    # disease_records table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS disease_records (
             id INTEGER PRIMARY KEY,
@@ -26,7 +26,7 @@ def init_db():
         )
     ''')
 
-    # Create feedback table
+    # feedback table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS feedback (
             id INTEGER PRIMARY KEY,
@@ -37,7 +37,7 @@ def init_db():
         )
     ''')
 
-    # Create inquiries table
+    # inquiries table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS inquiries (
             id INTEGER PRIMARY KEY,
@@ -48,7 +48,7 @@ def init_db():
         )
     ''')
 
-    # Create responses table
+    # responses table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS responses (
             id INTEGER PRIMARY KEY,
@@ -94,7 +94,6 @@ def save_disease_record(user_id, image_path, disease_name, prediction_confidence
     conn.commit()
     conn.close()
 
-# Function to get user disease records
 def get_user_records(user_id):
     conn = sqlite3.connect('plant_disease_recognition.db')
     cursor = conn.cursor()
@@ -103,7 +102,6 @@ def get_user_records(user_id):
     conn.close()
     return records
 
-# Function to save user feedback
 def save_feedback(record_id, feedback):
     conn = sqlite3.connect('plant_disease_recognition.db')
     cursor = conn.cursor()
@@ -111,7 +109,6 @@ def save_feedback(record_id, feedback):
     conn.commit()
     conn.close()
 
-# Function to delete user records
 def delete_user_records(user_id):
     conn = sqlite3.connect('plant_disease_recognition.db')
     cursor = conn.cursor()
@@ -172,7 +169,6 @@ def get_user_inquiries_with_responses(user_email):
     conn.close()
     return inquiries_with_responses
 
-# Function to get user inquiries
 def get_user_inquiries(user_id):
     conn = sqlite3.connect('plant_disease_recognition.db')
     cursor = conn.cursor()
@@ -194,13 +190,10 @@ def get_user_inquiries(user_id):
 
 
 
-################Expert 
 def authenticate_expert(email, password):
-     # Hardcoded email and password for demonstration
     default_expert_email = "expert@example.com"
     default_expert_password = "1234"
     
-    # Check if the provided email and password match
     if email == default_expert_email and password == default_expert_password:
         return (1, "Expert Name")  # Return expert ID and name
     else:

@@ -5,57 +5,43 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 from spellchecker import SpellChecker
-from User.chat_response import questions, answers, fallback_responses  # Import from chat_response.py
+from User.chat_response import questions, answers, fallback_responses
 
-# Download NLTK data (if not already downloaded)
 nltk.download('punkt')
 
-# Initialize the spell checker and the TF-IDF vectorizer
 spell = SpellChecker()
 vectorizer = TfidfVectorizer()
 
-# Vectorize the predefined questions for similarity matching
 tfidf_matrix = vectorizer.fit_transform(questions)
 
-# Function to correct spelling mistakes in user input
 def correct_spelling(text):
     words = text.split()
     corrected_words = [spell.correction(word) for word in words]
     return " ".join(corrected_words)
 
-# Chatbot logic to generate response
 def chatbot_response(query):
-    # Correct any spelling mistakes in the query
     corrected_query = correct_spelling(query)
     
-    # Vectorize the corrected query
     query_vec = vectorizer.transform([corrected_query])
     
-    # Compute cosine similarity between query and preloaded questions
     similarities = cosine_similarity(query_vec, tfidf_matrix)
     
-    # Find the most similar question
     closest = np.argmax(similarities, axis=1)[0]
     
-    # If similarity is below a threshold, return a fallback response
-    if similarities[0][closest] < 0.2:  # Adjust threshold as needed
+    if similarities[0][closest] < 0.2:
         return np.random.choice(fallback_responses)
     
-    # Return the corresponding answer
     return answers[closest]
 
-# Function to simulate typewriting effect for the bot's response
 def typewrite_text(text, delay=0.02):
-    response_placeholder = st.empty()  # Placeholder for dynamic content
+    response_placeholder = st.empty()
     typed_text = ""
     for char in text:
         typed_text += char
         response_placeholder.markdown(f"<div class='chatbot-box'><div class='bot-text'>{typed_text}</div></div>", unsafe_allow_html=True)
-        time.sleep(delay)  # Faster typing speed
+        time.sleep(delay)
 
-# Streamlit App
 def main():
-    # Custom CSS to style the interface (retaining the design from the first code)
     st.markdown(
         """
         <style>
@@ -100,21 +86,16 @@ def main():
     <p style='text-align: justify; font-size: 18px;'>Ask a question about plant diseases, farming techniques, or general plant health, and get helpful responses. Start by typing your query below:</p>
     """, unsafe_allow_html=True)
 
-    # User input area
     user_query = st.text_input("You:", "")
     
-    # Process user query and generate a response
     if st.button("Ask"):
         if user_query.strip():
-            # Display user's query with better visibility
             st.markdown(f"<div class='chatbot-box'><div class='user-text'>You:</div><div class='bot-text'>{user_query}</div></div>", unsafe_allow_html=True)
             
-            # Generate and display the bot's response with a typewriting effect
             response = chatbot_response(user_query)
             typewrite_text(response)
         else:
             st.warning("Please ask a question.")
 
-# Run the chatbot application
 if __name__ == "__main__":
     main()

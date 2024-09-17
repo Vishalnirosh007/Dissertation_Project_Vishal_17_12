@@ -4,11 +4,9 @@ def home():
     
     st.markdown("<h1 style='text-align: center; color: green;'>🌱 PLANT DISEASE RECOGNITION SYSTEM 🌱</h1>", unsafe_allow_html=True)
     
-    # Adding a high-quality hero image
     image_path = "Images/home_page.jpeg"
     st.image(image_path, use_column_width=True, caption="Detect plant diseases with precision.")
     
-    # Introductory section with clear structure
     st.markdown("""
     <div style="text-align: justify; padding: 20px; font-size: 18px;">
     Welcome to the Plant Disease Recognition System! Our platform is designed to assist farmers, researchers, and agriculturists in efficiently identifying plant diseases through image analysis. Simply upload a picture of your plant, and let our advanced algorithms do the rest. Together, we can protect crops and ensure healthier, more sustainable harvests.
@@ -25,7 +23,6 @@ def home():
     </ul>
     """, unsafe_allow_html=True)
 
-    # Highlighting key features of the system
     st.markdown("<h2 style='color: #4CAF50;'>Why Choose Our System?</h2>", unsafe_allow_html=True)
     
     st.markdown("""
@@ -37,7 +34,6 @@ def home():
     </div>
     """, unsafe_allow_html=True)
     
-    # Adding a call to action for users to start using the service
     st.markdown("<h2 style='color: #4CAF50;'>Ready to Get Started?</h2>", unsafe_allow_html=True)
     
     st.markdown("""
@@ -46,7 +42,6 @@ def home():
     </div>
     """, unsafe_allow_html=True)
 
-    # Footer and about section
     st.markdown("<h2 style='color: #4CAF50;'>About Us</h2>", unsafe_allow_html=True)
 
     st.markdown("""

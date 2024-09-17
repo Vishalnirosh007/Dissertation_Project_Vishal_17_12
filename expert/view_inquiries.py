@@ -1,7 +1,6 @@
 import streamlit as st
 import sqlite3
 
-# Function to get all inquiries
 def get_all_inquiries():
     conn = sqlite3.connect('plant_disease_recognition.db')
     cursor = conn.cursor()
@@ -10,7 +9,6 @@ def get_all_inquiries():
     conn.close()
     return inquiries
 
-# Function to store a response
 def store_response(inquiry_id, response_text):
     conn = sqlite3.connect('plant_disease_recognition.db')
     cursor = conn.cursor()
@@ -21,7 +19,6 @@ def store_response(inquiry_id, response_text):
     conn.commit()
     conn.close()
 
-# Function to view and reply to inquiries
 def view_inquiries():
     st.header("📋 View Inquiries")
     
@@ -40,7 +37,6 @@ def view_inquiries():
                     </div>
                 """, unsafe_allow_html=True)
 
-                # Add an expander to allow experts to reply to the inquiry
                 with st.expander("Reply"):
                     with st.form(f"response_form_{inquiry[0]}"):
                         response_text = st.text_area(f"Reply to Inquiry {inquiry[0]}", placeholder="Type your response here")

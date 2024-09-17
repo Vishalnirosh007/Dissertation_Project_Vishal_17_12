@@ -7,7 +7,7 @@ translations = {
         'about': "About",
         'disease_recognition': "Disease Recognition",
         'learn': "Learn",
-        'plant_disease_chatbot': "Plant Disease Chatbot",  # Added entry
+        'plant_disease_chatbot': "Plant Disease Chatbot",
         'my_records': "My Records",
         'contact_expert': "Contact Expert",
         'view_responses': "View Responses",
@@ -33,7 +33,7 @@ translations = {
         'about': "பற்றி",
         'disease_recognition': "நோய் அறிதல்",
         'learn': "கற்றல்",
-        'plant_disease_chatbot': "தாவர நோய் உரையாடல் ரோபோட்",  # Added entry
+        'plant_disease_chatbot': "தாவர நோய் உரையாடல் ரோபோட்",
         'my_records': "என் பதிவுகள்",
         'contact_expert': "சிறப்பு நபரைத் தொடர்பு கொள்",
         'view_responses': "பதில்களைப் பார்க்கவும்",
@@ -59,7 +59,7 @@ translations = {
         'about': "ගැන",
         'disease_recognition': "රෝග හඳුනාගැනීම",
         'learn': "ඉගෙන ගන්න",
-        'plant_disease_chatbot': "පැල රෝග චැට්බොට්",  # Added entry
+        'plant_disease_chatbot': "පැල රෝග චැට්බොට්",
         'my_records': "මගේ වාර්තා",
         'contact_expert': "විශේෂඥයෙකු හා සම්බන්ධවන්න",
         'view_responses': "ප්‍රතිචාර දර්ශනය කරන්න",

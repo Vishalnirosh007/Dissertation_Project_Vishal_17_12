@@ -1,18 +1,14 @@
 import streamlit as st
-from expert.expert_login import expert_login  # Import from the expert folder
-from expert.expert_home import expert_home    # Import from the expert folder
-from expert.view_inquiries import view_inquiries  # Import from the expert folder
-##from database import clear_all_inquiries  # Import the function to clear all inquiries
+from expert.expert_login import expert_login
+from expert.expert_home import expert_home
+from expert.view_inquiries import view_inquiries
 
-# Initialize session state for expert login
 if 'expert_logged_in' not in st.session_state:
     st.session_state['expert_logged_in'] = False
 if 'expert_id' not in st.session_state:
     st.session_state['expert_id'] = None
 
-# Main navigation for expert side
 if st.session_state['expert_logged_in']:
-    # Expert is logged in
     st.sidebar.title("Navigation")
     expert_mode = st.sidebar.selectbox("Select Page", ["Home", "View Inquiries"], key="expert_mode")
 
@@ -21,10 +17,8 @@ if st.session_state['expert_logged_in']:
     elif expert_mode == "View Inquiries":
         view_inquiries()
 
-    # Logout and Clear Inquiries buttons
-    col1, col2 = st.sidebar.columns([1, 1])  # Create two side-by-side columns
+    col1, col2 = st.sidebar.columns([1, 1])
 
-    # Logout button
     if col1.button("Logout", key="logout_button"):
         st.session_state['expert_logged_in'] = False
         st.session_state['expert_id'] = None
@@ -37,5 +31,4 @@ if st.session_state['expert_logged_in']:
         ##st.success("All inquiries have been cleared.")
         ##st.experimental_rerun()  # Rerun the app to update the inquiries list
 else:
-    # Expert not logged in, show login page
     expert_login()

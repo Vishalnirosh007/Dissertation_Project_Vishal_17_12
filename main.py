@@ -23,12 +23,11 @@ if 'language' not in st.session_state:
 selected_language_display = st.sidebar.selectbox(
     "Select Language / மொழி / භාෂාව", 
     options=list(language_options.keys()), 
-    index=list(language_options.values()).index(st.session_state['language'])  # Ensure the correct default is selected
+    index=list(language_options.values()).index(st.session_state['language'])
 )
 
 st.session_state['language'] = language_options[selected_language_display]
 
-# Session State for User Authentication
 if 'logged_in' not in st.session_state:
     st.session_state['logged_in'] = False
 if 'user_id' not in st.session_state:
@@ -60,11 +59,10 @@ def register():
 
 def logout():
     if st.sidebar.button(translations[st.session_state['language']]['logout'], key="logout_button"):
-        # Reset session state when logging out
         st.session_state['logged_in'] = False
         st.session_state['user_id'] = None
         st.success(translations[st.session_state['language']]['logout'])
-        st.experimental_rerun()  # This forces a rerun to update the UI
+        st.experimental_rerun()
 
 if st.session_state['logged_in']:
     logout()
